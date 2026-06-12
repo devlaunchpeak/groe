@@ -1,55 +1,16 @@
 import { createHmac, timingSafeEqual } from "crypto";
 
-// ---------------------------------------------------------------------------
-// Cookie names & options
-// ---------------------------------------------------------------------------
-export const SESSION_COOKIE_NAME = "groe_session";
-export const MAGIC_PENDING_COOKIE_NAME = "groe_magic_pending";
-export const SSO_STATE_COOKIE_NAME = "groe_sso_state";
-
-const IS_PROD = process.env.NODE_ENV === "production";
-
-export const SESSION_COOKIE_OPTIONS = {
-  httpOnly: true,
-  secure: IS_PROD,
-  sameSite: "lax" as const,
-  path: "/",
-  maxAge: 60 * 60 * 24 * 7, // 7 days — WorkOS manages actual token expiry
-};
-
-export const MAGIC_PENDING_COOKIE_OPTIONS = {
-  httpOnly: true,
-  secure: IS_PROD,
-  sameSite: "lax" as const,
-  path: "/",
-  maxAge: 60 * 15, // 15-minute TTL (rule 4.6)
-};
-
-export const SSO_STATE_COOKIE_OPTIONS = {
-  httpOnly: true,
-  secure: IS_PROD,
-  sameSite: "lax" as const,
-  path: "/",
-  maxAge: 60 * 5, // 5 minutes — enough to complete the OAuth redirect
-};
-
-// ---------------------------------------------------------------------------
-// Role-based post-login redirects
-// ---------------------------------------------------------------------------
-export type UserRole =
-  | "ic"
-  | "leader"
-  | "org_admin"
-  | "groe_admin"
-  | "groe_viewer";
-
-export const ROLE_REDIRECT: Record<UserRole, string> = {
-  ic: "/dashboard",
-  leader: "/dashboard",
-  org_admin: "/admin",
-  groe_admin: "/groe-admin",
-  groe_viewer: "/groe-admin",
-};
+// Re-export constants for callers that already import from session.ts
+export {
+  SESSION_COOKIE_NAME,
+  MAGIC_PENDING_COOKIE_NAME,
+  SSO_STATE_COOKIE_NAME,
+  SESSION_COOKIE_OPTIONS,
+  MAGIC_PENDING_COOKIE_OPTIONS,
+  SSO_STATE_COOKIE_OPTIONS,
+  type UserRole,
+  ROLE_REDIRECT,
+} from "./session-constants";
 
 // ---------------------------------------------------------------------------
 // Magic-pending cookie — HMAC-signed, contains the user's email for the
