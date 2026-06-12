@@ -12,7 +12,7 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL!;
 // ---------------------------------------------------------------------------
 // GET /api/groe-admin/orgs — list all orgs with aggregate stats
 // ---------------------------------------------------------------------------
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const actor = await requireRole("groe_admin", "groe_viewer");
     const db = createAdminClient();

@@ -1,5 +1,4 @@
 import { createAdminClient } from "@/lib/supabase/server";
-import { workos, WORKOS_CLIENT_ID } from "@/lib/workos/client";
 import { logAuditEvent, AuditAction } from "@/lib/audit";
 
 // ---------------------------------------------------------------------------
