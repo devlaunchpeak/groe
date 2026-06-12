@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+@layer base {
+  :root {
+    /* --- GROE design system tokens --- */
+    --color-nav-dark:      #1C4A2E;
+    --color-primary:       #2D6A4F;
+    --color-primary-light: #D6EAD8;
+    --color-bg:            #F8F6F0;
+    --color-card:          #FFFFFF;
+    --color-text:          #111827;
+    --color-muted:         #6B7280;
+    --color-border:        #E5E7EB;
+
+    /* RAG status colors */
+    --color-red:           #DC2626;
+    --color-amber:         #F59E0B;
+    --color-green:         #2D6A4F;
+
+    /* RAG background fills */
+    --color-red-bg:        #FEF2F2;
+    --color-amber-bg:      #FFFBEB;
+    --color-green-bg:      #F0FDF4;
+
+    /* --- shadcn/ui required CSS variables (mapped to GROE palette) --- */
+    --background: 43 33% 96%;          /* #F8F6F0 */
+    --foreground: 222 47% 11%;         /* #111827 */
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 155 41% 30%;            /* #2D6A4F */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 130 41% 84%;          /* #D6EAD8 */
+    --secondary-foreground: 155 41% 30%;
+
+    --muted: 220 9% 46%;               /* #6B7280 */
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 130 41% 84%;
+    --accent-foreground: 155 41% 30%;
+
+    --destructive: 0 72% 51%;          /* #DC2626 */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;             /* #E5E7EB */
+    --input: 220 13% 91%;
+    --ring: 155 41% 30%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+
+  /* Score and data labels use monospace */
+  .font-data {
+    font-family: "IBM Plex Mono", monospace;
+  }
+}
