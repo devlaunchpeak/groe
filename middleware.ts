@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { workos, WORKOS_CLIENT_ID } from "@/lib/workos/client";
+import { workos } from "@/lib/workos/client";
 import {
   SESSION_COOKIE_NAME,
   SESSION_COOKIE_OPTIONS,
@@ -52,7 +52,6 @@ export async function middleware(request: NextRequest) {
   const session = workos.userManagement.loadSealedSession({
     sessionData: sessionCookie,
     cookiePassword: process.env.WORKOS_COOKIE_PASSWORD!,
-    clientId: WORKOS_CLIENT_ID,
   });
 
   let authenticated = false;
