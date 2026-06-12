@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { NextResponse } from "next/server";
 
 // Prompt 14: Returns a short-lived signed URL for a video asset.
