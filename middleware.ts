@@ -1,5 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { SESSION_COOKIE_NAME } from "@/lib/workos/session-constants";
+
+// ---------------------------------------------------------------------------
+// Inlined to avoid @/ path alias imports which Vercel Edge bundler rejects
+// ---------------------------------------------------------------------------
+const SESSION_COOKIE_NAME = "groe_session";
 
 // ---------------------------------------------------------------------------
 // Public paths — never require a session
